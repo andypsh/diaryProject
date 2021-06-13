@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+ <head>
+        <meta charset="UTF-8" /> 
+        <meta name="viewport" content="width=200, initial-scale=1.0" /> 
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" /> 
+    </head> 
+    <body>
+        <table border = 1>
+            {% for key, value in diary.items()%}
+                <tr>
+                    <th> {{key}} </th>
+                    <td> {{value}} </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </body>
+        <!--{% if True %}
+        <img src = "{{url_for('static', filename=image_file)}}" />
+        {% endif %}-->
+    <body>
+        <input type="file" id="image" accept="image/*" onchange="setImage(event);"/> 
+        <div id="image_container"></div>
+  
+        <script> function setImage(event) { 
+            var reader = new FileReader(); 
+            reader.onload = function(event) { 
+                var img = document.createElement("img"); 
+                img.setAttribute("src", event.target.result);
+                 img.setAttribute("width" , 300);
+                img.setAttribute("height" , 300);   
+                document.querySelector("div#image_container").appendChild(img); 
+                }; 
+            
+                reader.readAsDataURL(event.target.files[0]); 
+                } 
+        </script> 
+    </body>
+    <form>
+    <p><input type = "button" value = "save"/> <input type = "button" value = "modify"/> 
+    <input type = "button" value = "Delete"/></p>
+   </form>
+</html>
